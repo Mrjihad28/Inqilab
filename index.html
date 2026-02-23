@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 চাঁদা বাজকে থাপ্পড় মারো</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --primary-glow: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02);
+    --secondary-glow: linear-gradient(45deg, #667eea, #764ba2);
+    --danger-glow: linear-gradient(45deg, #ff416c, #ff4b2b);
+    --success-glow: linear-gradient(45deg, #11998e, #38ef7d);
+    --neon-glow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans Bengali', 'Exo 2', sans-serif;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #0a0a0a 0%, #1a0033 50%, #000 100%);
+    background-attachment: fixed;
+    color: #fff;
+    position: relative;
+    height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+    animation: nebula 20s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes nebula {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    100% { transform: scale(1.1) rotate(180deg); opacity: 1; }
+}
+
+#topBanner, #bottomBanner {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    background: rgba(0,0,0,0.85);
+    border-radius: 18px;
+    padding: 10px;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#topBanner { top: 12px; }
+#bottomBanner { bottom: 25px; }
+
+#topBanner:hover, #bottomBanner:hover {
+    transform: translateX(-50%) scale(1.03);
+    box-shadow: 0 20px 50px rgba(255,107,53,0.5);
+    border-color: rgba(255,107,53,0.6);
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.screen.active { display: flex !important; }
+
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 50px 60px;
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 0 50px rgba(255,107,53,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 90vw;
+}
+
+.glass::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    background: var(--primary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    text-shadow: var(--neon-glow);
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--secondary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    text-shadow: var(--neon-glow);
+}
+
+.btn-neon {
+    padding: 18px 40px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+    margin: 10px;
+}
+
+.btn-neon:hover, .btn-neon:active {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255,107,53,0.6);
+    background: linear-gradient(45deg, #f7931e, #ff6b35);
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn-neon:hover::before { left: 100%; }
+
+#gameUI {
+    position: fixed;
+    top: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 20;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+#gameUI .health-container {
+    width: 200px;
+    background: rgba(0,0,0,0.9);
+    padding: 25px;
+    border-radius: 25px;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    text-align: center;
+    pointer-events: all;
+}
+
+.enemy-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(45deg, #ff6b35, #ffcc02);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 15px rgba(255,107,53,0.8);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.health-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.health-bar {
+    height: 20px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ccff, #0099ff);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0,255,136,0.7);
+}
+
+.health-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+#target {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 50%;
+    z-index: 15;
+    filter: drop-shadow(0 8px 25px rgba(255,107,53,0.6));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02);
+    box-shadow: 
+        0 0 25px rgba(255,107,53,0.9),
+        inset 0 0 25px rgba(255,255,255,0.3);
+}
+
+#target::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    top: 25%;
+    right: 25%;
+    transform: scale(0);
+    animation: slapEffect 0.3s forwards;
+    z-index: 2;
+}
+
+@keyframes slapEffect {
+    0% { transform: scale(0) rotate(-20deg); }
+    50% { transform: scale(1.2) rotate(10deg); }
+    100% { transform: scale(0) rotate(20deg); opacity: 0; }
+}
+
+#target:hover, #target:active {
+    transform: scale(1.2) rotate(15deg) !important;
+    box-shadow: 0 0 45px rgba(255,107,53,1) !important;
+}
+
+#bomb {
+    display: none;
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 30px rgba(255,65,108,0.9),
+        inset 0 0 20px rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    z-index: 15;
+}
+
+#bomb:hover, #bomb:active {
+    transform: scale(1.2) rotate(-15deg) !important;
+    box-shadow: 0 0 45px rgba(255,65,108,1) !important;
+}
+
+.welcome-slogan {
+    position: fixed;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-weight: 900;
+    text-align: center;
+    color: #00ff88;
+    text-shadow: 
+        0 0 25px rgba(0,255,136,1),
+        0 0 50px rgba(0,255,136,0.8);
+    opacity: 0;
+    z-index: 25;
+    pointer-events: none;
+    animation: welcomePulse 4s ease-in-out;
+}
+
+@keyframes welcomePulse {
+    0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+    20% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+    80% { opacity: 1; transform: translateX(-50%) scale(1); }
+    100% { opacity: 0; transform: translateX(-50%) scale(1.1); }
+}
+
+.level-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.8rem, 8vw, 4rem);
+    font-weight: 900;
+    text-align: center;
+    opacity: 0;
+    z-index: 25;
+    text-shadow: 
+        0 0 20px rgba(255,255,255,0.9),
+        0 0 40px rgba(255,107,53,0.8);
+    pointer-events: none;
+}
+
+@keyframes levelBanner {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+    40% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.8rem;
+    animation: particleExplode 0.7s forwards;
+    z-index: 30;
+}
+
+@keyframes particleExplode {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.8) translate(var(--dx), var(--dy)) rotate(720deg); opacity: 0; }
+}
+
+.score-popup {
+    position: absolute;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0,255,136,0.9);
+    pointer-events: none;
+    z-index: 30;
+    animation: scoreFloat 1s ease-out forwards;
+}
+
+@keyframes scoreFloat {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-80px) scale(1.4); opacity: 0; }
+}
+
+.shake { animation: shake 0.4s ease-in-out; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+}
+
+.victory-slogan {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-weight: 900;
+    text-align: center;
+    color: #00ff88;
+    text-shadow: 
+        0 0 30px rgba(0,255,136,1),
+        0 0 60px rgba(0,255,136,0.8);
+    opacity: 0;
+    z-index: 40;
+    pointer-events: none;
+    animation: sloganPulse 2s ease-in-out;
+}
+
+@keyframes sloganPulse {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@media (max-width: 768px) {
+    .glass { padding: 30px 30px; }
+    .health-container { width: 170px; padding: 20px; }
+    #target, #bomb { width: 90px; height: 90px; }
+    h1 { font-size: clamp(1.8rem, 6vw, 3rem); }
+    .enemy-name { font-size: 1rem !important; }
+    
+    #topBanner, #bottomBanner { padding: 6px !important; border-radius: 12px !important; }
+    #topBanner { top: 8px !important; }
+    #bottomBanner { bottom: 15px !important; }
+    #gameUI { top: 100px !important; }
+    .welcome-slogan { top: 115px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- 🔥 ADSTERRRA BANNERS -->
+<div id="topBanner">
+    <div id="desktopBannerTop"></div>
+    <div id="mobileBannerTop" style="display: none;"></div>
+</div>
+
+<div id="bottomBanner">
+    <div id="desktopBannerBottom"></div>
+    <div id="mobileBannerBottom" style="display: none;"></div>
+</div>
+
+<!-- SCREENS -->
+<div id="intro" class="screen active">
+    <div class="glass">
+        <h1><i class="fas fa-hand-fist"></i><br>চাঁদা বাজকে<br>থাপ্পড় মারো</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 25px; opacity: 0.9; font-weight: 600;">চাঁদা বাজদের থাপ্পড় দিয়ে পরাজিত করো!</p>
+        <button class="btn-neon" onclick="game.showRules()">
+            <i class="fas fa-rocket"></i> শুরু করো
+        </button>
+    </div>
+</div>
+
+<div id="rules" class="screen">
+    <div class="glass">
+        <h2><i class="fas fa-info-circle"></i> খেলার নিয়ম</h2>
+        <div style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; opacity: 0.95;">
+            <p><i class="fas fa-hand-fist" style="color: #00ff88; font-size: 1.3em;"></i> <strong>চাঁদা বাজকে থাপ্পড় মারো</strong> - তার লাইফ কমবে</p>
+            <p><i class="fas fa-bomb" style="color: #ff416c;"></i> বোম্বে ট্যাপ হলে তোমার লাইফ কমবে</p>
+            <p><i class="fas fa-trophy" style="color: #ffcc02;"></i> ৩ লেভেল কমপ্লিট করো!</p>
+        </div>
+        <button class="btn-neon" onclick="game.startGame()">
+            <i class="fas fa-play"></i> খেলা শুরু
+        </button>
+    </div>
+</div>
+
+<div id="game" class="screen">
+    <div id="welcomeSlogan" class="welcome-slogan">🎉 ইনকিলাব জিন্দাবাদ! 🎉</div>
+    
+    <div id="gameUI">
+        <div class="health-container">
+            <div id="enemyName" class="enemy-name">বিদ্যুৎ মন্ত্রী টুকু</div>
+            <div class="health-label">⚔️ চাঁদা বাজ</div>
+            <div class="health-bar">
+                <div id="enemyHealth" class="health-fill"></div>
+            </div>
+        </div>
+        <div class="health-container">
+            <div class="health-label">🛡️ তুমি</div>
+            <div class="health-bar">
+                <div id="playerHealth" class="health-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="banner" class="level-banner"></div>
+    <div id="slogan" class="victory-slogan"></div>
+    
+    <!-- 🔥 FIXED FACE CONTAINER - সব Face আসবে! ✅ -->
+    <div id="target">
+        <div id="chandaFace" style="
+            width: 100%; height: 100%; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            background: linear-gradient(45deg, #ff4444, #cc2222);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.6);
+        ">
+            <img id="enemyImage" src="" alt="চাঁদা বাজ" style="
+                width: 85px; height: 85px; border-radius: 50%;
+                object-fit: cover; object-position: center;
+                border: 4px solid rgba(255,255,255,0.9);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+                transition: all 0.3s ease;
+                background: #333;
+            " 
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODUiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCA4NSA4NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDIuNSIgY3k9IjQyLjUiIHI9IjQwIiBmaWxsPSIjZmY0NDQ0Ii8+CjxjaXJjbGUgY3g9IjI2IiBjeT0iMzIiIHI9IjgiIGZpbGw9IiNmZmYiLz4KPGNpcmNsZSBjeD0iNTkiIGN5PSIzMiIgcj0iOCIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNMjAgNTBDMjAgNDAgMzAgMzAgMzUgMzVDNDAgMjAgNTAgMzAgNTAgNDBMNjAgNDBMNjAgNTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=';this.style.opacity='1';">
+            
+            <i class="fas fa-frown" id="frownIcon" style="
+                font-size: 2.8rem; color: #fff; 
+                text-shadow: 0 0 15px #000; 
+                position: absolute; z-index: 2;
+                opacity: 1; transition: opacity 0.3s;
+            "></i>
+        </div>
+    </div>
+    
+    <div id="bomb">
+        <i class="fas fa-bomb"></i>
+    </div>
+</div>
+
+<script>
+class ProTapBattle {
+    constructor() {
+        // 🔥 তোমার সব Face Image ✅ - Direct Links!
+        this.faceImages = [
+            "https://i.postimg.cc/r032xSf6/1.jpg",      // লেভেল 1 ✅
+            "https://i.postimg.cc/5YZD6ftt/2.jpg",      // লেভেল 2 ✅
+            "https://i.postimg.cc/LqQcFtKN/3.jpg"       // লেভেল 3 ✅
+        ];
+        
+        this.level = 0;
+        this.enemyHP = 0;
+        this.playerHP = 100;
+        this.moveInterval = null;
+        this.bombInterval = null;
+        this.enemies = [
+            { name: "বিদ্যুৎ মন্ত্রী টুকু", hp: 120, speed: 900, bombFreq: 3000 },
+            { name: "মির্জা আব্বাস", hp: 200, speed: 650, bombFreq: 2200 },
+            { name: "ববি হাজ্জাজ", hp: 300, speed: 450, bombFreq: 1600 }
+        ];
+        
+        this.target = document.getElementById("target");
+        this.gameScreen = document.getElementById("game");
+        this.slogan = document.getElementById("slogan");
+        this.enemyNameEl = document.getElementById("enemyName");
+        this.enemyImageEl = document.getElementById("enemyImage");
+        this.frownIcon = document.getElementById("frownIcon");
+        this.welcomeSlogan = document.getElementById("welcomeSlogan");
+        
+        this.init();
+        this.initBanners();
+    }
+    
+    initBanners() {
+        loadBanners();
+        window.addEventListener('resize', () => setTimeout(loadBanners, 300));
+    }
+    
+    init() {
+        this.showScreen("intro");
+        
+        this.target.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.attackEnemy(e);
+        });
+        
+        this.target.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const touch = e.touches[0];
+            this.attackEnemy({ pageX: touch.pageX, pageY: touch.pageY });
+        }, { passive: false });
+        
+        const bomb = document.getElementById("bomb");
+        bomb.addEventListener("click", (e) => this.hitBomb(e));
+        bomb.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            this.hitBomb(e.touches[0]);
+        }, { passive: false });
+    }
+    
+    showScreen(id) {
+        document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+    }
+    
+    showRules() {
+        this.showScreen("rules");
+    }
+    
+    startGame() {
+        this.level = 0;
+        this.playerHP = 100;
+        this.showScreen("game");
+        this.showWelcomeSlogan();
+        setTimeout(() => this.nextLevel(), 4000);
+    }
+    
+    showWelcomeSlogan() {
+        this.welcomeSlogan.style.display = 'block';
+        this.welcomeSlogan.style.animation = 'none';
+        this.welcomeSlogan.offsetHeight;
+        this.welcomeSlogan.style.animation = 'welcomePulse 4s ease-in-out';
+        setTimeout(() => this.welcomeSlogan.style.display = 'none', 4000);
+    }
+    
+    nextLevel() {
+        if (this.level >= this.enemies.length) {
+            this.gameWin();
+            return;
+        }
+        this.level++;
+        const currentEnemy = this.enemies[this.level - 1];
+        this.enemyHP = currentEnemy.hp;
+        this.enemyNameEl.textContent = currentEnemy.name;
+        
+        // 🔥 LOAD REAL FACE IMAGE + ERROR HANDLING ✅
+        const imgIndex = this.level - 1;
+        this.enemyImageEl.src = this.faceImages[imgIndex];
+        this.enemyImageEl.style.opacity = '0';
+        this.frownIcon.style.opacity = '1';
+        
+        this.enemyImageEl.onload = () => {
+            this.enemyImageEl.style.opacity = '1';
+            this.frownIcon.style.opacity = '0';
+        };
+        
+        this.enemyImageEl.onerror = () => {
+            // Fallback cartoon face
+            this.enemyImageEl.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODUiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCA4NSA4NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDIuNSIgY3k9IjQyLjUiIHI9IjQwIiBmaWxsPSIjZmY0NDQ0Ii8+CjxjaXJjbGUgY3g9IjI2IiBjeT0iMzIiIHI9IjgiIGZpbGw9IiNmZmYiLz4KPGNpcmNsZSBjeD0iNTkiIGN5PSIzMiIgcj0iOCIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNMjAgNTBDMjAgNDAgMzAgMzAgMzUgMzVDNDAgMjAgNTAgMzAgNTAgNDBMNjAgNDBMNjAgNTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=';
+            this.enemyImageEl.style.opacity = '1';
+            this.frownIcon.style.opacity = '0.3';
+        };
+        
+        this.updateUI();
+        this.showLevelBanner(`লেভেল ${this.level}/3<br>${currentEnemy.name}`);
+        this.stopIntervals();
+        setTimeout(() => {
+            this.startMovement(currentEnemy.speed);
+            this.startBomb(currentEnemy.bombFreq);
+        }, 3000);
+    }
+    
+    attackEnemy(e) {
+        const damage = 28 + Math.floor(Math.random() * 12);
+        this.enemyHP = Math.max(0, this.enemyHP - damage);
+        this.target.style.transform = 'scale(1.3) rotate(-20deg)';
+        
+        // 🔥 FACE SHAKE EFFECT ✅
+        this.enemyImageEl.style.transform = 'scale(0.8) rotate(-15deg)';
+        this.frownIcon.style.transform = 'scale(1.4) rotate(30deg)';
+        this.frownIcon.style.opacity = '1';
+        
+        setTimeout(() => {
+            this.target.style.transform = '';
+            this.enemyImageEl.style.transform = '';
+            this.frownIcon.style.transform = '';
+            if (this.enemyImageEl.src.includes('postimg')) {
+                this.frownIcon.style.opacity = '0';
+            }
+        }, 200);
+        
+        this.createHitEffect(e.pageX || e.clientX, e.pageY || e.clientY, damage);
+        if (navigator.vibrate) navigator.vibrate([30, 15, 30]);
+        if (this.enemyHP <= 0) this.levelComplete();
+        this.updateUI();
+    }
+    
+    hitBomb(e) {
+        this.playerHP = Math.max(0, this.playerHP - 28);
+        this.createHitEffect(e.pageX || e.clientX, e.pageY || e.clientY, -28);
+        document.getElementById("bomb").style.display = "none";
+        document.body.classList.add("shake");
+        setTimeout(() => document.body.classList.remove("shake"), 400);
+        if (navigator.vibrate) navigator.vibrate([80, 40, 80]);
+        if (this.playerHP <= 0) this.gameOver();
+        this.updateUI();
+    }
+    
+    levelComplete() {
+        this.stopIntervals();
+        this.showVictorySlogan("🎉 ইনকিলাব জিন্দাবাদ! 🎉");
+        this.speakVictory();
+        setTimeout(() => this.nextLevel(), 3000);
+    }
+    
+    gameOver() {
+        this.stopIntervals();
+        this.showDefeatSlogan("😡 চাঁদা বাজ জিন্দাবাদ 😡");
+        setTimeout(() => {
+            if (confirm('💀 গেম ওভার!\n\nআবার খেলবে?')) {
+                this.startGame();
+            } else {
+                this.showScreen("intro");
+            }
+        }, 2500);
+    }
+    
+    gameWin() {
+        this.stopIntervals();
+        this.showVictorySlogan("🏆 ইনকিলাব জিন্দাবাদ!\nসকল চাঁদা বাজ পরাজিত! 🏆");
+        setTimeout(() => {
+            if (confirm('🎉 অভিনন্দন! সকল চাঁদা বাজ পরাজিত! 🎉\n\nআবার খেলবে?')) {
+                this.startGame();
+            }
+        }, 4000);
+    }
+    
+    showVictorySlogan(text) {
+        this.slogan.textContent = text;
+        this.slogan.style.color = '#00ff88';
+        this.slogan.style.display = 'block';
+        this.slogan.style.animation = 'none';
+        this.slogan.offsetHeight;
+        this.slogan.style.animation = 'sloganPulse 2s ease-in-out';
+        setTimeout(() => this.slogan.style.display = 'none', 2000);
+    }
+    
+    showDefeatSlogan(text) {
+        this.slogan.textContent = text;
+        this.slogan.style.color = '#ff416c';
+        this.slogan.style.display = 'block';
+        this.slogan.style.animation = 'none';
+        this.slogan.offsetHeight;
+        this.slogan.style.animation = 'sloganPulse 2s ease-in-out';
+        setTimeout(() => this.slogan.style.display = 'none', 2000);
+    }
+    
+    updateUI() {
+        const maxHP = this.enemies[this.level - 1]?.hp || 100;
+        document.getElementById("enemyHealth").style.width = Math.max(0, (this.enemyHP / maxHP * 100)) + "%";
+        document.getElementById("playerHealth").style.width = this.playerHP + "%";
+    }
+    
+    showLevelBanner(text) {
+        const banner = document.getElementById("banner");
+        banner.innerHTML = text;
+        banner.style.animation = "none";
+        banner.offsetHeight;
+        banner.style.animation = "levelBanner 3s ease-in-out";
+    }
+    
+    stopIntervals() {
+        if (this.moveInterval) clearInterval(this.moveInterval);
+        if (this.bombInterval) clearInterval(this.bombInterval);
+    }
+    
+    startMovement(speed) {
+        this.moveInterval = setInterval(() => {
+            const maxX = window.innerWidth - 130;
+            const maxY = window.innerHeight - 250;
+            const x = Math.random() * maxX;
+            const y = 200 + Math.random() * (maxY - 200);
+            this.target.style.left = x + 'px';
+            this.target.style.top = y + 'px';
+        }, speed);
+    }
+    
+    startBomb(freq) {
+        this.bombInterval = setInterval(() => {
+            const bomb = document.getElementById("bomb");
+            bomb.style.display = 'flex';
+            const maxX = window.innerWidth - 130;
+            const maxY = window.innerHeight - 250;
+            const x = Math.random() * maxX;
+            const y = 200 + Math.random() * (maxY - 200);
+            bomb.style.left = x + 'px';
+            bomb.style.top = y + 'px';
+            setTimeout(() => {
+                if (bomb.style.display !== 'none') bomb.style.display = 'none';
+            }, 1600);
+        }, freq);
+    }
+    
+    createHitEffect(x, y, damage) {
+        const scorePopup = document.createElement('div');
+        scorePopup.className = 'score-popup';
+        scorePopup.textContent = damage > 0 ? `-${damage}` : damage;
+        scorePopup.style.left = (x - 25) + 'px';
+        scorePopup.style.top = (y - 25) + 'px';
+        scorePopup.style.color = damage > 0 ? '#00ff88' : '#ff416c';
+        document.body.appendChild(scorePopup);
+        setTimeout(() => scorePopup.remove(), 1000);
+        
+        const particles = damage > 0 ? ['💥', '⭐', '✋', '🔥'] : ['💣', '💨'];
+        particles.forEach((emoji, i) => {
+            setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = emoji;
+                particle.style.left = (x + (Math.random() - 0.5) * 80) + 'px';
+                particle.style.top = (y + (Math.random() - 0.5) * 80) + 'px';
+                particle.style.setProperty('--dx', (Math.random() - 0.5) * 150 + 'px');
+                particle.style.setProperty('--dy', (Math.random() - 0.5) * 150 + 'px');
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 700);
+            }, i * 80);
+        });
+    }
+    
+    speakVictory() {
+        if ('speechSynthesis' in window) {
+            const utter = new SpeechSynthesisUtterance("ইনকিলাব জিন্দাবাদ! চাঁদা বাজ পরাজিত!");
+            utter.lang = "bn-BD";
+            utter.rate = 0.9;
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utter);
+        }
+    }
+}
+
+// 🔥 ADSTERRRA BANNERS ✅
+function loadBanners() {
+    const isMobile = window.innerWidth <= 768;
+    
+    // TOP
+    if (isMobile) {
+        document.getElementById('mobileBannerTop').style.display = 'block';
+        document.getElementById('mobileBannerTop').innerHTML = `
+            <script>
+                atOptions = {
+                    'key' : '4ec4591f66d6cbdbfbe061d795602344',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            <\/script>
+            <script src="https://www.highperformanceformat.com/4ec4591f66d6cbdbfbe061d795602344/invoke.js"><\/script>
+        `;
+        document.getElementById('desktopBannerTop').innerHTML = '';
+    } else {
+        document.getElementById('desktopBannerTop').innerHTML = `
+            <script>
+                atOptions = {
+                    'key' : 'ebee045b5d2f5236fcc9a7cc9a8a981f',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            <\/script>
+            <script src="https://www.highperformanceformat.com/ebee045b5d2f5236fcc9a7cc9a8a981f/invoke.js"><\/script>
+        `;
+        document.getElementById('mobileBannerTop').style.display = 'none';
+    }
+    
+    // BOTTOM
+    if (isMobile) {
+        document.getElementById('mobileBannerBottom').style.display = 'block';
+        document.getElementById('mobileBannerBottom').innerHTML = `
+            <script>
+                atOptions = {
+                    'key' : '4ec4591f66d6cbdbfbe061d795602344',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            <\/script>
+            <script src="https://www.highperformanceformat.com/4ec4591f66d6cbdbfbe061d795602344/invoke.js"><\/script>
+        `;
+        document.getElementById('desktopBannerBottom').innerHTML = '';
+    } else {
+        document.getElementById('desktopBannerBottom').innerHTML = `
+            <script>
+                atOptions = {
+                    'key' : 'ebee045b5d2f5236fcc9a7cc9a8a981f',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            <\/script>
+            <script src="https://www.highperformanceformat.com/ebee045b5d2f5236fcc9a7cc9a8a981f/invoke.js"><\/script>
+        `;
+        document.getElementById('mobileBannerBottom').style.display = 'none';
+    }
+}
+
+// 🔥 INIT
+let game;
+document.addEventListener('DOMContentLoaded', () => {
+    loadBanners();
+    game = new ProTapBattle();
+    console.log("🚀 চাঁদা বাজ গেম লোড! Face Images Ready!");
+});
+
+// Prevent zoom
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) event.preventDefault();
+    lastTouchEnd = now;
+}, false);
+
+window.game = game;
+</script>
+
+</body>
+</html>
