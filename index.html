@@ -31,6 +31,133 @@ body {
     height: 100vh;
 }
 
+/* 🔥 SPLASH SCREEN - ইনকিলাব জিন্দাবাদ + Developed by Arafat! ✅ */
+#introSplash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0c0c1e 0%, #1a0033 50%, #000 100%);
+    opacity: 1;
+    transition: opacity 1s ease-out 4.5s;
+}
+
+#introSplash.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(4rem, 20vw, 12rem);
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b35, #ffcc02);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    text-shadow: 
+        0 0 40px rgba(0,255,136,1),
+        0 0 80px rgba(0,255,136,0.8),
+        0 0 120px rgba(255,107,53,0.6);
+    animation: 
+        sloganGlow 2s ease-in-out infinite alternate,
+        sloganFloat 3s ease-out 0.5s forwards;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes sloganGlow {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    100% { filter: hue-rotate(60deg) brightness(1.2); }
+}
+
+@keyframes sloganFloat {
+    0% { opacity: 0; transform: scale(0.5) translateY(50px); }
+    30% { opacity: 1; transform: scale(1.3) translateY(-20px); }
+    60% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+}
+
+/* 🔥 NEW - Developed by Arafat! ✅ */
+.developer-credit {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    text-shadow: 
+        0 0 25px rgba(255,255,255,0.9),
+        0 0 50px rgba(0,255,136,0.6),
+        0 0 80px rgba(255,107,53,0.4);
+    opacity: 0;
+    animation: developerSlide 2.5s ease-out 2s forwards;
+    letter-spacing: 2px;
+}
+
+.developer-credit i {
+    color: #ffcc02;
+    animation: devIconGlow 2s ease-in-out infinite alternate;
+    margin-right: 12px;
+}
+
+@keyframes developerSlide {
+    0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+    50% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes devIconGlow {
+    0% { text-shadow: 0 0 10px #ffcc02; }
+    100% { text-shadow: 0 0 25px #ffcc02, 0 0 40px #ffcc02; }
+}
+
+.splash-subtitle {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 
+        0 0 25px rgba(255,255,255,0.8),
+        0 0 50px rgba(0,255,136,0.5);
+    opacity: 0;
+    animation: subtitleSlide 2.5s ease-out 1.8s forwards;
+}
+
+@keyframes subtitleSlide {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.splash-particle {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    animation: particleRain 4s ease-out forwards;
+}
+
+@keyframes particleRain {
+    0% { opacity: 0; transform: translateY(-100vh) rotate(0deg) scale(0); }
+    20% { opacity: 1; transform: translateY(-50vh) rotate(180deg) scale(1); }
+    100% { opacity: 0; transform: translateY(100vh) rotate(720deg) scale(0.5); }
+}
+
 body::before {
     content: '';
     position: fixed;
@@ -50,29 +177,6 @@ body::before {
 @keyframes nebula {
     0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
     100% { transform: scale(1.1) rotate(180deg); opacity: 1; }
-}
-
-#topBanner, #bottomBanner {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 25;
-    background: rgba(0,0,0,0.85);
-    border-radius: 18px;
-    padding: 10px;
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255,255,255,0.25);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-#topBanner { top: 12px; }
-#bottomBanner { bottom: 25px; }
-
-#topBanner:hover, #bottomBanner:hover {
-    transform: translateX(-50%) scale(1.03);
-    box-shadow: 0 20px 50px rgba(255,107,53,0.5);
-    border-color: rgba(255,107,53,0.6);
 }
 
 .screen {
@@ -187,68 +291,109 @@ h2 {
 
 .btn-neon:hover::before { left: 100%; }
 
+/* 🔥 উপরে উঠানো Score UI - নতুন Design ✅ */
 #gameUI {
     position: fixed;
-    top: 120px;
-    width: 100%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 500px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 15px;
     z-index: 20;
-    padding: 0 20px;
+    padding: 15px 20px;
     pointer-events: none;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 
+        0 15px 40px rgba(0,0,0,0.7),
+        0 0 30px rgba(255,107,53,0.3);
 }
 
 #gameUI .health-container {
-    width: 200px;
-    background: rgba(0,0,0,0.9);
-    padding: 25px;
-    border-radius: 25px;
+    flex: 1;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 18px;
     backdrop-filter: blur(25px);
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 
+        0 12px 30px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.15);
     text-align: center;
     pointer-events: all;
+    position: relative;
+    overflow: hidden;
+}
+
+#gameUI .health-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#gameUI .health-container:hover::before {
+    opacity: 1;
+    animation: shineUI 2s infinite;
+}
+
+@keyframes shineUI {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .enemy-name {
     font-family: 'Orbitron', monospace;
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    font-weight: 900;
     margin-bottom: 8px;
     background: linear-gradient(45deg, #ff6b35, #ffcc02);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 15px rgba(255,107,53,0.8);
+    text-shadow: 0 0 12px rgba(255,107,53,0.9);
     letter-spacing: 1px;
     text-transform: uppercase;
+    line-height: 1.1;
 }
 
 .health-label {
     font-family: 'Orbitron', monospace;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
     font-weight: 700;
     margin-bottom: 12px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    letter-spacing: 0.5px;
 }
 
 .health-bar {
-    height: 20px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
+    height: 22px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 15px;
     overflow: hidden;
     position: relative;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .health-fill {
     height: 100%;
     width: 100%;
     background: linear-gradient(90deg, #00ff88, #00ccff, #0099ff);
-    border-radius: 10px;
-    transition: width 0.4s ease;
+    border-radius: 13px;
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
-    box-shadow: 0 0 12px rgba(0,255,136,0.7);
+    box-shadow: 0 0 15px rgba(0,255,136,0.8);
 }
 
 .health-fill::after {
@@ -258,8 +403,8 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: pulse 1.5s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: pulse 1.8s infinite;
 }
 
 @keyframes pulse {
@@ -271,6 +416,9 @@ h2 {
     width: 110px;
     height: 110px;
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     border-radius: 50%;
@@ -309,7 +457,7 @@ h2 {
 }
 
 #target:hover, #target:active {
-    transform: scale(1.2) rotate(15deg) !important;
+    transform: translate(-50%, -50%) scale(1.2) rotate(15deg) !important;
     box-shadow: 0 0 45px rgba(255,107,53,1) !important;
 }
 
@@ -338,7 +486,7 @@ h2 {
 
 .welcome-slogan {
     position: fixed;
-    top: 140px;
+    top: 200px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Orbitron', monospace;
@@ -453,33 +601,37 @@ h2 {
 
 @media (max-width: 768px) {
     .glass { padding: 30px 30px; }
-    .health-container { width: 170px; padding: 20px; }
+    #gameUI { 
+        top: 15px;
+        width: 95vw;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+    #gameUI .health-container { 
+        padding: 18px 15px; 
+    }
+    .enemy-name { font-size: 1rem !important; }
+    .health-label { font-size: 0.9rem !important; }
     #target, #bomb { width: 90px; height: 90px; }
     h1 { font-size: clamp(1.8rem, 6vw, 3rem); }
-    .enemy-name { font-size: 1rem !important; }
-    
-    #topBanner, #bottomBanner { padding: 6px !important; border-radius: 12px !important; }
-    #topBanner { top: 8px !important; }
-    #bottomBanner { bottom: 15px !important; }
-    #gameUI { top: 100px !important; }
-    .welcome-slogan { top: 115px !important; }
+    .welcome-slogan { top: 160px !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- 🔥 ADSTERRRA BANNERS -->
-<div id="topBanner">
-    <div id="desktopBannerTop"></div>
-    <div id="mobileBannerTop" style="display: none;"></div>
+<!-- 🔥 SPLASH SCREEN - ইনকিলাব জিন্দাবাদ + Developed by Arafat! ✅ -->
+<div id="introSplash">
+    <div class="splash-title">ইনকিলাব জিন্দাবাদ</div>
+    <div class="splash-subtitle">🎉 চাঁদা বাজকে থাপ্পড় মারো! 🎉</div>
+    <!-- 🔥 NEW - Developed by Arafat! ✅ -->
+    <div class="developer-credit">
+        <i class="fas fa-crown"></i> Developed by Arafat
+    </div>
+    <div class="particle-container" id="particleContainer"></div>
 </div>
 
-<div id="bottomBanner">
-    <div id="desktopBannerBottom"></div>
-    <div id="mobileBannerBottom" style="display: none;"></div>
-</div>
-
-<!-- SCREENS -->
+<!-- MAIN GAME SCREENS -->
 <div id="intro" class="screen active">
     <div class="glass">
         <h1><i class="fas fa-hand-fist"></i><br>চাঁদা বাজকে<br>থাপ্পড় মারো</h1>
@@ -507,6 +659,7 @@ h2 {
 <div id="game" class="screen">
     <div id="welcomeSlogan" class="welcome-slogan">🎉 ইনকিলাব জিন্দাবাদ! 🎉</div>
     
+    <!-- 🔥 উপরে উঠানো Score UI ✅ -->
     <div id="gameUI">
         <div class="health-container">
             <div id="enemyName" class="enemy-name">বিদ্যুৎ মন্ত্রী টুকু</div>
@@ -526,7 +679,7 @@ h2 {
     <div id="banner" class="level-banner"></div>
     <div id="slogan" class="victory-slogan"></div>
     
-    <!-- 🔥 FIXED FACE CONTAINER - সব Face আসবে! ✅ -->
+    <!-- 🔥 CENTER TARGET - সব Face আসবে! ✅ -->
     <div id="target">
         <div id="chandaFace" style="
             width: 100%; height: 100%; border-radius: 50%;
@@ -589,36 +742,47 @@ class ProTapBattle {
         this.welcomeSlogan = document.getElementById("welcomeSlogan");
         
         this.init();
-        this.initBanners();
-    }
-    
-    initBanners() {
-        loadBanners();
-        window.addEventListener('resize', () => setTimeout(loadBanners, 300));
     }
     
     init() {
-        this.showScreen("intro");
+        // 🔥 SPLASH SCREEN HANDLING ✅
+        this.showSplashScreen();
+    }
+    
+    showSplashScreen() {
+        const splash = document.getElementById("introSplash");
+        const title = document.querySelector(".splash-title");
+        const subtitle = document.querySelector(".splash-subtitle");
+        const developer = document.querySelector(".developer-credit");
+        const particleContainer = document.getElementById("particleContainer");
         
-        this.target.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.attackEnemy(e);
-        });
+        // 🔥 Particles Animation ✅
+        this.createSplashParticles(particleContainer);
         
-        this.target.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const touch = e.touches[0];
-            this.attackEnemy({ pageX: touch.pageX, pageY: touch.pageY });
-        }, { passive: false });
+        // Title animation
+        title.style.animationDelay = "0.5s";
         
-        const bomb = document.getElementById("bomb");
-        bomb.addEventListener("click", (e) => this.hitBomb(e));
-        bomb.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            this.hitBomb(e.touches[0]);
-        }, { passive: false });
+        // Hide splash after 5.5 seconds (extra 0.5s for developer credit)
+        setTimeout(() => {
+            splash.classList.add("fade-out");
+            setTimeout(() => {
+                splash.style.display = "none";
+                this.showScreen("intro");
+            }, 1000);
+        }, 5500);
+    }
+    
+    createSplashParticles(container) {
+        const emojis = ['✨', '🔥', '⭐', '⚡', '💥', '🎉'];
+        for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'splash-particle';
+            particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (3 + Math.random() * 2) + 's';
+            container.appendChild(particle);
+        }
     }
     
     showScreen(id) {
@@ -686,7 +850,7 @@ class ProTapBattle {
     attackEnemy(e) {
         const damage = 28 + Math.floor(Math.random() * 12);
         this.enemyHP = Math.max(0, this.enemyHP - damage);
-        this.target.style.transform = 'scale(1.3) rotate(-20deg)';
+        this.target.style.transform = 'translate(-50%, -50%) scale(1.3) rotate(-20deg)';
         
         // 🔥 FACE SHAKE EFFECT ✅
         this.enemyImageEl.style.transform = 'scale(0.8) rotate(-15deg)';
@@ -694,7 +858,7 @@ class ProTapBattle {
         this.frownIcon.style.opacity = '1';
         
         setTimeout(() => {
-            this.target.style.transform = '';
+            this.target.style.transform = 'translate(-50%, -50%)';
             this.enemyImageEl.style.transform = '';
             this.frownIcon.style.transform = '';
             if (this.enemyImageEl.src.includes('postimg')) {
@@ -792,7 +956,7 @@ class ProTapBattle {
             const maxX = window.innerWidth - 130;
             const maxY = window.innerHeight - 250;
             const x = Math.random() * maxX;
-            const y = 200 + Math.random() * (maxY - 200);
+            const y = 250 + Math.random() * (maxY - 250);
             this.target.style.left = x + 'px';
             this.target.style.top = y + 'px';
         }, speed);
@@ -805,7 +969,7 @@ class ProTapBattle {
             const maxX = window.innerWidth - 130;
             const maxY = window.innerHeight - 250;
             const x = Math.random() * maxX;
-            const y = 200 + Math.random() * (maxY - 200);
+            const y = 250 + Math.random() * (maxY - 250);
             bomb.style.left = x + 'px';
             bomb.style.top = y + 'px';
             setTimeout(() => {
@@ -851,81 +1015,33 @@ class ProTapBattle {
     }
 }
 
-// 🔥 ADSTERRRA BANNERS ✅
-function loadBanners() {
-    const isMobile = window.innerWidth <= 768;
-    
-    // TOP
-    if (isMobile) {
-        document.getElementById('mobileBannerTop').style.display = 'block';
-        document.getElementById('mobileBannerTop').innerHTML = `
-            <script>
-                atOptions = {
-                    'key' : '4ec4591f66d6cbdbfbe061d795602344',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            <\/script>
-            <script src="https://www.highperformanceformat.com/4ec4591f66d6cbdbfbe061d795602344/invoke.js"><\/script>
-        `;
-        document.getElementById('desktopBannerTop').innerHTML = '';
-    } else {
-        document.getElementById('desktopBannerTop').innerHTML = `
-            <script>
-                atOptions = {
-                    'key' : 'ebee045b5d2f5236fcc9a7cc9a8a981f',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            <\/script>
-            <script src="https://www.highperformanceformat.com/ebee045b5d2f5236fcc9a7cc9a8a981f/invoke.js"><\/script>
-        `;
-        document.getElementById('mobileBannerTop').style.display = 'none';
-    }
-    
-    // BOTTOM
-    if (isMobile) {
-        document.getElementById('mobileBannerBottom').style.display = 'block';
-        document.getElementById('mobileBannerBottom').innerHTML = `
-            <script>
-                atOptions = {
-                    'key' : '4ec4591f66d6cbdbfbe061d795602344',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            <\/script>
-            <script src="https://www.highperformanceformat.com/4ec4591f66d6cbdbfbe061d795602344/invoke.js"><\/script>
-        `;
-        document.getElementById('desktopBannerBottom').innerHTML = '';
-    } else {
-        document.getElementById('desktopBannerBottom').innerHTML = `
-            <script>
-                atOptions = {
-                    'key' : 'ebee045b5d2f5236fcc9a7cc9a8a981f',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            <\/script>
-            <script src="https://www.highperformanceformat.com/ebee045b5d2f5236fcc9a7cc9a8a981f/invoke.js"><\/script>
-        `;
-        document.getElementById('mobileBannerBottom').style.display = 'none';
-    }
-}
-
 // 🔥 INIT
 let game;
 document.addEventListener('DOMContentLoaded', () => {
-    loadBanners();
     game = new ProTapBattle();
-    console.log("🚀 চাঁদা বাজ গেম লোড! Face Images Ready!");
+    console.log("🚀 চাঁদা বাজ গেম লোড! Arafat এর Splash Screen Active!");
+    
+    // 🔥 EVENT LISTENERS - Target এ Click/Tap ✅
+    document.getElementById('target').addEventListener('click', (e) => {
+        if (game) game.attackEnemy(e);
+    });
+    
+    document.getElementById('bomb').addEventListener('click', (e) => {
+        if (game) game.hitBomb(e);
+    });
+    
+    // Mobile Touch Support
+    document.getElementById('target').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        if (game) game.attackEnemy({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+    
+    document.getElementById('bomb').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        if (game) game.hitBomb({ clientX: touch.clientX, clientY: touch.clientY });
+    });
 });
 
 // Prevent zoom
